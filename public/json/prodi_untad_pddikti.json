@@ -1,0 +1,180 @@
+[
+    {"kode": 14401, "lembaga": "D3 Keperawatan"
+    },
+    {"kode": 61404, "lembaga": "D3 Manajemen Pemasaran"
+    },
+    {"kode": 20403, "lembaga": "D3 Teknik Listrik"
+    },
+    {"kode": 21401, "lembaga": "D3 Teknik Mesin"
+    },
+    {"kode": 22401, "lembaga": "D3 Teknik Sipil"
+    },
+    {"kode": 62303, "lembaga": "D4 Akuntansi Sektor Publik"
+    },
+    {"kode": 20303, "lembaga": "D4 Teknologi Rekayasa Instalasi Listrik"
+    },
+    {"kode": 22301, "lembaga": "D4 Teknologi Rekayasa Konstruksi Jalan dan Jembatan"
+    },
+    {"kode": 36301, "lembaga": "D4 Teknologi Rekayasa Manufaktur"
+    },
+    {"kode": 86904, "lembaga": "Profesi Pendidikan Profesi Guru"
+    },
+    {"kode": 11901, "lembaga": "Profesi Profesi Dokter"
+    },
+    {"kode": 23902, "lembaga": "Profesi Program Profesi Insinyur"
+    },
+    {"kode": 54201, "lembaga": "S1 Agribisnis"
+    },
+    {"kode": 54211, "lembaga": "S1 Agroteknologi"
+    },
+    {"kode": 54212, "lembaga": "S1 Agroteknologi (Kampus Kab. Morowali)"
+    },
+    {"kode": 54213, "lembaga": "S1 Agroteknologi Kampus Kab. Tojo Una-una"
+    },
+    {"kode": 54243, "lembaga": "S1 Akuakultur"
+    },
+    {"kode": 62201, "lembaga": "S1 Akuntansi"
+    },
+    {"kode": 82201, "lembaga": "S1 Antropologi"
+    },
+    {"kode": 23201, "lembaga": "S1 Arsitektur"
+    },
+    {"kode": 86201, "lembaga": "S1 Bimbingan Dan Konseling"
+    },
+    {"kode": 46201, "lembaga": "S1 Biologi"
+    },
+    {"kode": 60201, "lembaga": "S1 Ekonomi dan Pembangunan"
+    },
+    {"kode": 48201, "lembaga": "S1 Farmasi"
+    },
+    {"kode": 45201, "lembaga": "S1 Fisika"
+    },
+    {"kode": 13211, "lembaga": "S1 Gizi"
+    },
+    {"kode": 63201, "lembaga": "S1 Ilmu Administrasi Publik"
+    },
+    {"kode": 74201, "lembaga": "S1 Ilmu Hukum"
+    },
+    {"kode": 70201, "lembaga": "S1 Ilmu Komunikasi"
+    },
+    {"kode": 65201, "lembaga": "S1 Ilmu Pemerintahan"
+    },
+    {"kode": 11201, "lembaga": "S1 Kedokteran"
+    },
+    {"kode": 54251, "lembaga": "S1 Kehutanan"
+    },
+    {"kode": 13201, "lembaga": "S1 Kesehatan Masyarakat"
+    },
+    {"kode": 47201, "lembaga": "S1 Kimia"
+    },
+    {"kode": 61201, "lembaga": "S1 Manajemen"
+    },
+    {"kode": 61271, "lembaga": "S1 Manajemen (Kampus Kab.Morowali)"
+    },
+    {"kode": 61272, "lembaga": "S1 Manajemen Kampus Kab. Tojo Una-una"
+    },
+    {"kode": 44201, "lembaga": "S1 Matematika"
+    },
+    {"kode": 88201, "lembaga": "S1 Pendidikan Bahasa Dan Sastra Indonesia"
+    },
+    {"kode": 88203, "lembaga": "S1 Pendidikan Bahasa Inggris"
+    },
+    {"kode": 84205, "lembaga": "S1 Pendidikan Biologi"
+    },
+    {"kode": 84203, "lembaga": "S1 Pendidikan Fisika"
+    },
+    {"kode": 87202, "lembaga": "S1 Pendidikan Geografi"
+    },
+    {"kode": 86207, "lembaga": "S1 Pendidikan Guru Pendidikan Anak Usia Dini"
+    },
+    {"kode": 86206, "lembaga": "S1 Pendidikan Guru Sekolah Dasar"
+    },
+    {"kode": 84208, "lembaga": "S1 Pendidikan Ilmu Pengetahuan Alam"
+    },
+    {"kode": 85201, "lembaga": "S1 Pendidikan Jasmani, Kesehatan Dan Rekreasi"
+    },
+    {"kode": 84204, "lembaga": "S1 Pendidikan Kimia"
+    },
+    {"kode": 84202, "lembaga": "S1 Pendidikan Matematika"
+    },
+    {"kode": 87205, "lembaga": "S1 Pendidikan Pancasila Dan Kewarganegaraan"
+    },
+    {"kode": 87201, "lembaga": "S1 Pendidikan Sejarah"
+    },
+    {"kode": 35201, "lembaga": "S1 Perencanaan Wilayah dan Kota"
+    },
+    {"kode": 54231, "lembaga": "S1 Peternakan"
+    },
+    {"kode": 57201, "lembaga": "S1 Sistem Informasi"
+    },
+    {"kode": 69201, "lembaga": "S1 Sosiologi"
+    },
+    {"kode": 49201, "lembaga": "S1 Statistika"
+    },
+    {"kode": 20201, "lembaga": "S1 Teknik Elektro"
+    },
+    {"kode": 33201, "lembaga": "S1 Teknik Geofisika"
+    },
+    {"kode": 34201, "lembaga": "S1 Teknik Geologi"
+    },
+    {"kode": 55202, "lembaga": "S1 Teknik Informatika"
+    },
+    {"kode": 352045, "lembaga": "S1 Teknik Lingkungan"
+    },
+    {"kode": 21201, "lembaga": "S1 Teknik Mesin"
+    },
+    {"kode": 22201, "lembaga": "S1 Teknik Sipil"
+    },
+    {"kode": 22211, "lembaga": "S1 Teknik Sipil (Kampus Kab. Morowali)"
+    },
+    {"kode": 22212, "lembaga": "S1 Teknik Sipil Kampus Kab Tojo Una-una"
+    },
+    {"kode": 63101, "lembaga": "S2 Administrasi Publik"
+    },
+    {"kode": 54101, "lembaga": "S2 Agribisnis"
+    },
+    {"kode": 62101, "lembaga": "S2 Akuntansi"
+    },
+    {"kode": 60101, "lembaga": "S2 Ekonomi"
+    },
+    {"kode": 74101, "lembaga": "S2 Ilmu Hukum"
+    },
+    {"kode": 70101, "lembaga": "S2 Ilmu Komunikasi"
+    },
+    {"kode": 54108, "lembaga": "S2 Ilmu Pertanian"
+    },
+    {"kode": 13104, "lembaga": "S2 Kesehatan Masyarakat"
+    },
+    {"kode": 47102, "lembaga": "S2 Kimia"
+    },
+    {"kode": 61101, "lembaga": "S2 Manajemen"
+    },
+    {"kode": 95103, "lembaga": "S2 Pembangunan Wilayah Pedesaan"
+    },
+    {"kode": 88101, "lembaga": "S2 Pendidikan Bahasa Indonesia"
+    },
+    {"kode": 88103, "lembaga": "S2 Pendidikan Bahasa Inggris"
+    },
+    {"kode": 87120, "lembaga": "S2 Pendidikan Ilmu Pengetahuan Sosial"
+    },
+    {"kode": 85101, "lembaga": "S2 Pendidikan Jasmani"
+    },
+    {"kode": 84102, "lembaga": "S2 Pendidikan Matematika"
+    },
+    {"kode": 84101, "lembaga": "S2 Pendidikan Sains"
+    },
+    {"kode": 87101, "lembaga": "S2 Pendidikan Sejarah"
+    },
+    {"kode": 22101, "lembaga": "S2 Teknik Sipil"
+    },
+    {"kode": 60001, "lembaga": "S3 Ilmu Ekonomi"
+    },
+    {"kode": 54001, "lembaga": "S3 Ilmu Pertanian"
+    },
+    {"kode": 68001, "lembaga": "S3 Ilmu Sosial"
+    },
+    {"kode": 84001, "lembaga": "S3 Pendidikan Sains"
+    },
+    {"kode": 22001, "lembaga": "S3 Teknik Sipil"
+    }
+]

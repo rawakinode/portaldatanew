@@ -1,0 +1,802 @@
+[
+  {
+    "name": "ilmu hukum",
+    "kode": 74201,
+    "jenjang": "S1",
+    "username": "ilmuhukum",
+    "password": "sledyiqtcs",
+    "role": 5,
+    "account": 0,
+    "fakultas": 4
+  },
+  {
+    "name": "keperawatan",
+    "kode": 14401,
+    "jenjang": "D3",
+    "username": "d3keperawatanuntad",
+    "password": "gbnr6n2yyp",
+    "role": 5,
+    "account": 0,
+    "fakultas": 9
+  },
+  {
+    "name": "kedokteran",
+    "kode": 11201,
+    "jenjang": "S1",
+    "username": "kedokteranuntad",
+    "password": "eyvpbg9hcd",
+    "role": 5,
+    "account": 0,
+    "fakultas": 9
+  },
+  {
+    "name": "konservasi sumberdaya hutan",
+    "kode": 54454,
+    "jenjang": "D3",
+    "username": "d3konservasisdhuntad",
+    "password": "mqakx9j33w",
+    "role": 5,
+    "account": 0,
+    "fakultas": 9
+  },
+  {
+    "name": "kehutanan",
+    "kode": 54251,
+    "jenjang": "S1",
+    "username": "kehutananuntad",
+    "password": "nntvm7kibn",
+    "role": 5,
+    "account": 0,
+    "fakultas": 9
+  },
+  {
+    "name": "agribisnis",
+    "kode": 54201,
+    "jenjang": "S1",
+    "username": "agribisnis",
+    "password": "jcgraqy0ve",
+    "role": 5,
+    "account": 0,
+    "fakultas": 9
+  },
+  {
+    "name": "agroteknologi",
+    "kode": 54211,
+    "jenjang": "S1",
+    "username": "agroteknologi",
+    "password": "8jnebsubnd",
+    "role": 5,
+    "account": 0,
+    "fakultas": 9
+  },
+  {
+    "name": "peternakan",
+    "kode": 54231,
+    "jenjang": "S1",
+    "username": "peternakan",
+    "password": "rj1i0abvyv",
+    "role": 5,
+    "account": 0,
+    "fakultas": 10
+  },
+  {
+    "name": "akuakultur",
+    "kode": 54243,
+    "jenjang": "S1",
+    "username": "akuakultur",
+    "password": "1p319ropzx",
+    "role": 5,
+    "account": 0,
+    "fakultas": 10
+  },
+  {
+    "name": "teknik sipil",
+    "kode": 22401,
+    "jenjang": "D3",
+    "username": "d3sipiluntad",
+    "password": "8tt5tj0k84",
+    "role": 5,
+    "account": 0,
+    "fakultas": 6
+  },
+  {
+    "name": "teknik mesin",
+    "kode": 21401,
+    "jenjang": "D3",
+    "username": "d3mesinuntad",
+    "password": "kunyvn310i",
+    "role": 5,
+    "account": 0,
+    "fakultas": 6
+  },
+  {
+    "name": "teknik listrik",
+    "kode": 20403,
+    "jenjang": "D3",
+    "username": "d3listrikuntad",
+    "password": "ggnzrdnmmg",
+    "role": 5,
+    "account": 0,
+    "fakultas": 6
+  },
+  {
+    "name": "teknik informatika",
+    "kode": 55202,
+    "jenjang": "S1",
+    "username": "teknikinformatika",
+    "password": "e7bvmuseom",
+    "role": 5,
+    "account": 0,
+    "fakultas": 6
+  },
+  {
+    "name": "teknik sipil",
+    "kode": 22201,
+    "jenjang": "S1",
+    "username": "tekniksipil",
+    "password": "8ep581jikl",
+    "role": 5,
+    "account": 0,
+    "fakultas": 6
+  },
+  {
+    "name": "teknik geologi",
+    "kode": 34201,
+    "jenjang": "S1",
+    "username": "teknikgeologi",
+    "password": "3xabmdptl6",
+    "role": 5,
+    "account": 0,
+    "fakultas": 6
+  },
+  {
+    "name": "teknik arsitektur",
+    "kode": 23201,
+    "jenjang": "S1",
+    "username": "teknikarsitektur",
+    "password": "h5hju6n9db",
+    "role": 5,
+    "account": 0,
+    "fakultas": 6
+  },
+  {
+    "name": "teknik mesin",
+    "kode": 21201,
+    "jenjang": "S1",
+    "username": "teknikmesin",
+    "password": "vxedec8atm",
+    "role": 5,
+    "account": 0,
+    "fakultas": 6
+  },
+  {
+    "name": "perencanaan wilayah dan kota",
+    "kode": 35201,
+    "jenjang": "S1",
+    "username": "perencanaanwilayahkota",
+    "password": "tf10yzv8io",
+    "role": 5,
+    "account": 0,
+    "fakultas": 6
+  },
+  {
+    "name": "teknik elektro",
+    "kode": 20201,
+    "jenjang": "S1",
+    "username": "teknikelektro",
+    "password": "ws3eo2qz54",
+    "role": 5,
+    "account": 0,
+    "fakultas": 6
+  },
+  {
+    "name": "teknik lingkungan",
+    "kode": 352045,
+    "jenjang": "S1",
+    "username": "tekniklingkungan",
+    "password": "xd1h9hen6f",
+    "role": 5,
+    "account": 0,
+    "fakultas": 6
+  },
+  {
+    "name": "akuntansi",
+    "kode": 62401,
+    "jenjang": "D3",
+    "username": "d3akuntansiuntad",
+    "password": "bj9sq3moi2",
+    "role": 5,
+    "account": 0,
+    "fakultas": 3
+  },
+  {
+    "name": "akuntansi",
+    "kode": 62201,
+    "jenjang": "S1",
+    "username": "akuntansiuntad",
+    "password": "z62xvn59rh",
+    "role": 5,
+    "account": 0,
+    "fakultas": 3
+  },
+  {
+    "name": "manajemen",
+    "kode": 61201,
+    "jenjang": "S1",
+    "username": "ekonomimanajemen",
+    "password": "4ur1ravuw3",
+    "role": 5,
+    "account": 0,
+    "fakultas": 3
+  },
+  {
+    "name": "ekonomi dan pembangunan",
+    "kode": 60201,
+    "jenjang": "S1",
+    "username": "ekonomipembangunan",
+    "password": "eo3lhsvvv7",
+    "role": 5,
+    "account": 0,
+    "fakultas": 3
+  },
+  {
+    "name": "manajemen pemasaran",
+    "kode": 61404,
+    "jenjang": "D3",
+    "username": "d3manajemenpemasaranuntad",
+    "password": "n9ph0shnwp",
+    "role": 5,
+    "account": 0,
+    "fakultas": 3
+  },
+  {
+    "name": "ilmu komunikasi",
+    "kode": 70201,
+    "jenjang": "S1",
+    "username": "ilmukomunikasi",
+    "password": "z4d0mz36v5",
+    "role": 5,
+    "account": 0,
+    "fakultas": 2
+  },
+  {
+    "name": "ilmu pemerintahan",
+    "kode": 65201,
+    "jenjang": "S1",
+    "username": "ilmupemerintahan",
+    "password": "5cyt10ybjj",
+    "role": 5,
+    "account": 0,
+    "fakultas": 2
+  },
+  {
+    "name": "ilmu administrasi publik",
+    "kode": 63201,
+    "jenjang": "S1",
+    "username": "ilmuadministrasipublik",
+    "password": "8jvv01u9qs",
+    "role": 5,
+    "account": 0,
+    "fakultas": 2
+  },
+  {
+    "name": "sosiologi",
+    "kode": 69201,
+    "jenjang": "S1",
+    "username": "sosiologiuntad",
+    "password": "57pg36pxpz",
+    "role": 5,
+    "account": 0,
+    "fakultas": 2
+  },
+  {
+    "name": "antropologi",
+    "kode": 82201,
+    "jenjang": "S1",
+    "username": "antropologi",
+    "password": "kwks16b0me",
+    "role": 5,
+    "account": 0,
+    "fakultas": 2
+  },
+  {
+    "name": "pgsd",
+    "kode": 86206,
+    "jenjang": "S1",
+    "username": "pgsduntad",
+    "password": "xzae3pwtqe",
+    "role": 5,
+    "account": 0,
+    "fakultas": 1
+  },
+  {
+    "name": "pendidikan biologi",
+    "kode": 84205,
+    "jenjang": "S1",
+    "username": "biologifkip",
+    "password": "y2qskeyrul",
+    "role": 5,
+    "account": 0,
+    "fakultas": 1
+  },
+  {
+    "name": "pendidikan matematika",
+    "kode": 84202,
+    "jenjang": "S1",
+    "username": "matematikafkip",
+    "password": "12ooxitvt6",
+    "role": 5,
+    "account": 0,
+    "fakultas": 1
+  },
+  {
+    "name": "pendidikan bahasa dan sastra indonesia",
+    "kode": 88201,
+    "jenjang": "S1",
+    "username": "pendidikanbahasafkip",
+    "password": "p37jt5zmxc",
+    "role": 5,
+    "account": 0,
+    "fakultas": 1
+  },
+  {
+    "name": "pgpaud",
+    "kode": 86207,
+    "jenjang": "S1",
+    "username": "pgpaudfkip",
+    "password": "d10khqg34u",
+    "role": 5,
+    "account": 0,
+    "fakultas": 1
+  },
+  {
+    "name": "pendidikan pancasila dan kewarganegaraan",
+    "kode": 87205,
+    "jenjang": "S1",
+    "username": "ppknuntad",
+    "password": "qa45p04j46",
+    "role": 5,
+    "account": 0,
+    "fakultas": 1
+  },
+  {
+    "name": "pendidikan sejarah",
+    "kode": 87201,
+    "jenjang": "S1",
+    "username": "pendidikansejarah",
+    "password": "ylwzptltoz",
+    "role": 5,
+    "account": 0,
+    "fakultas": 1
+  },
+  {
+    "name": "pendidikan geografi",
+    "kode": 87202,
+    "jenjang": "S1",
+    "username": "pendidikangeografi",
+    "password": "i82aonrn48",
+    "role": 5,
+    "account": 0,
+    "fakultas": 1
+  },
+  {
+    "name": "bimbingan dan konseling",
+    "kode": 86201,
+    "jenjang": "S1",
+    "username": "bimbingankonseling",
+    "password": "iai3ihzesv",
+    "role": 5,
+    "account": 0,
+    "fakultas": 1
+  },
+  {
+    "name": "pendidikan kimia",
+    "kode": 84204,
+    "jenjang": "S1",
+    "username": "pendidikankimia",
+    "password": "l86sr1dw61",
+    "role": 5,
+    "account": 0,
+    "fakultas": 1
+  },
+  {
+    "name": "pendidikan fisika",
+    "kode": 84203,
+    "jenjang": "S1",
+    "username": "pendidikanfisika",
+    "password": "6hcgpsa72v",
+    "role": 5,
+    "account": 0,
+    "fakultas": 1
+  },
+  {
+    "name": "pendidikan bahasa inggris",
+    "kode": 88203,
+    "jenjang": "S1",
+    "username": "bahasainggrisfkip",
+    "password": "xsor9ypfqx",
+    "role": 5,
+    "account": 0,
+    "fakultas": 1
+  },
+  {
+    "name": "pendidikan jasmani kesehatan dan rekreasi",
+    "kode": 85201,
+    "jenjang": "S1",
+    "username": "penjasfkip",
+    "password": "2mj3is43ju",
+    "role": 5,
+    "account": 0,
+    "fakultas": 1
+  },
+  {
+    "name": "pendidikan profesi guru",
+    "kode": 86904,
+    "jenjang": "PROF",
+    "username": "profesiguru",
+    "password": "uauvt2lv9z",
+    "role": 5,
+    "account": 0,
+    "fakultas": 1
+  },
+  {
+    "name": "kesehatan masyarakat",
+    "kode": 13201,
+    "jenjang": "S1",
+    "username": "kesehatanmasyarakat",
+    "password": "8qts66rsvc",
+    "role": 5,
+    "account": 0,
+    "fakultas": 11
+  },
+  {
+    "name": "gizi",
+    "kode": 13211,
+    "jenjang": "S1",
+    "username": "gizifkm",
+    "password": "vv6oy4pbss",
+    "role": 5,
+    "account": 0,
+    "fakultas": 11
+  },
+  {
+    "name": "farmasi",
+    "kode": 49201,
+    "jenjang": "S1",
+    "username": "farmasiuntad",
+    "password": "dfckmg1r8e",
+    "role": 5,
+    "account": 0,
+    "fakultas": 7
+  },
+  {
+    "name": "statistika",
+    "kode": 44202,
+    "jenjang": "S1",
+    "username": "statistikamipa",
+    "password": "i5t3c0ubhe",
+    "role": 5,
+    "account": 0,
+    "fakultas": 7
+  },
+  {
+    "name": "fisika",
+    "kode": 45201,
+    "jenjang": "S1",
+    "username": "fisikafmipa",
+    "password": "xrgzfz98e0",
+    "role": 5,
+    "account": 0,
+    "fakultas": 7
+  },
+  {
+    "name": "matematika",
+    "kode": 44201,
+    "jenjang": "S1",
+    "username": "matematikafmipa",
+    "password": "7q3rslnps5",
+    "role": 5,
+    "account": 0,
+    "fakultas": 7
+  },
+  {
+    "name": "biologi",
+    "kode": 46201,
+    "jenjang": "S1",
+    "username": "biologifmipa",
+    "password": "95o7muet9g",
+    "role": 5,
+    "account": 0,
+    "fakultas": 7
+  },
+  {
+    "name": "kimia",
+    "kode": 47201,
+    "jenjang": "S1",
+    "username": "kimiafmipa",
+    "password": "13p63mfy0x",
+    "role": 5,
+    "account": 0,
+    "fakultas": 7
+  },
+  {
+    "name": "teknik geofisika",
+    "kode": 33201,
+    "jenjang": "S1",
+    "username": "teknikgeofisika",
+    "password": "cwhh2mbo8d",
+    "role": 5,
+    "account": 0,
+    "fakultas": 7
+  },
+  {
+    "name": "profesi dokter",
+    "kode": 11901,
+    "jenjang": "PROF",
+    "username": "profesidokter",
+    "password": "228mj1lnm5",
+    "role": 5,
+    "account": 0,
+    "fakultas": 9
+  },
+  {
+    "name": "pendidikan bahasa indonesia",
+    "kode": 88101,
+    "jenjang": "S2",
+    "username": "bahasaindonesiapasca",
+    "password": "8x08ycsod8",
+    "role": 5,
+    "account": 0,
+    "fakultas": 12
+  },
+  {
+    "name": "manajemen",
+    "kode": 61101,
+    "jenjang": "S2",
+    "username": "manajemenpasca",
+    "password": "nfv96gj4eh",
+    "role": 5,
+    "account": 0,
+    "fakultas": 12
+  },
+  {
+    "name": "pendidikan sains",
+    "kode": 84101,
+    "jenjang": "S2",
+    "username": "sainspasca",
+    "password": "3s40x04rxj",
+    "role": 5,
+    "account": 0,
+    "fakultas": 12
+  },
+  {
+    "name": "pembangunan wilayah pedesaan",
+    "kode": 95103,
+    "jenjang": "S2",
+    "username": "pembangunanwildesapasca",
+    "password": "2x7sin92n4",
+    "role": 5,
+    "account": 0,
+    "fakultas": 12
+  },
+  {
+    "name": "agribisnis",
+    "kode": 54101,
+    "jenjang": "S2",
+    "username": "agribisnispasca",
+    "password": "4p8gqmvybu",
+    "role": 5,
+    "account": 0,
+    "fakultas": 12
+  },
+  {
+    "name": "administrasi publik",
+    "kode": 63101,
+    "jenjang": "S2",
+    "username": "adminpublikpasca",
+    "password": "3w50x9n7mp",
+    "role": 5,
+    "account": 0,
+    "fakultas": 12
+  },
+  {
+    "name": "pendidikan sejarah",
+    "kode": 87101,
+    "jenjang": "S2",
+    "username": "sejarahpasca",
+    "password": "xscqy3xw6m",
+    "role": 5,
+    "account": 0,
+    "fakultas": 12
+  },
+  {
+    "name": "ilmu hukum",
+    "kode": 74101,
+    "jenjang": "S2",
+    "username": "ilmuhukumpasca",
+    "password": "llb9rsw911",
+    "role": 5,
+    "account": 0,
+    "fakultas": 12
+  },
+  {
+    "name": "pendidikan matematika",
+    "kode": 84102,
+    "jenjang": "S2",
+    "username": "pendidikanmatematikapasca",
+    "password": "ce5heticzu",
+    "role": 5,
+    "account": 0,
+    "fakultas": 12
+  },
+  {
+    "name": "teknik sipil",
+    "kode": 22101,
+    "jenjang": "S2",
+    "username": "tekniksipilpasca",
+    "password": "ze03qipptc",
+    "role": 5,
+    "account": 0,
+    "fakultas": 12
+  },
+  {
+    "name": "akuntansi",
+    "kode": 62101,
+    "jenjang": "S2",
+    "username": "akuntansipasca",
+    "password": "xr6f0h6mex",
+    "role": 5,
+    "account": 0,
+    "fakultas": 12
+  },
+  {
+    "name": "pendidikan bahasa inggris",
+    "kode": 88103,
+    "jenjang": "S2",
+    "username": "bahasainggrispasca",
+    "password": "70pqafbgss",
+    "role": 5,
+    "account": 0,
+    "fakultas": 12
+  },
+  {
+    "name": "ilmu pertanian",
+    "kode": 54108,
+    "jenjang": "S2",
+    "username": "ilmupertanianpasca",
+    "password": "7rv0clzgau",
+    "role": 5,
+    "account": 0,
+    "fakultas": 12
+  },
+  {
+    "name": "pendidikan ilmu pengetahuan sosial ",
+    "kode": 87120,
+    "jenjang": "S2",
+    "username": "ipspasca",
+    "password": "dlr9tzomgf",
+    "role": 5,
+    "account": 0,
+    "fakultas": 12
+  },
+  {
+    "name": "ilmu pertanian",
+    "kode": 54001,
+    "jenjang": "S3",
+    "username": "ilmupertanians3",
+    "password": "f1dbaxfiem",
+    "role": 5,
+    "account": 0,
+    "fakultas": 12
+  },
+  {
+    "name": "ilmu ekonomi",
+    "kode": 60001,
+    "jenjang": "S3",
+    "username": "ilmuekonomis3",
+    "password": "2ds5ok8hv8",
+    "role": 5,
+    "account": 0,
+    "fakultas": 12
+  },
+  {
+    "name": "ilmu sosial",
+    "kode": 68001,
+    "jenjang": "S3",
+    "username": "ilmusosials3",
+    "password": "pdygfayki9",
+    "role": 5,
+    "account": 0,
+    "fakultas": 12
+  },
+  {
+    "name": "pendidikan sains",
+    "kode": 84001,
+    "jenjang": "S3",
+    "username": "pendidikansainss3",
+    "password": "becwjfdbnl",
+    "role": 5,
+    "account": 0,
+    "fakultas": 12
+  },
+  {
+    "name": "pendidikan profesi insinyur",
+    "kode": 23902,
+    "jenjang": "PROF",
+    "username": "profesiinsinyur",
+    "password": "7l2i3s7y6f",
+    "role": 5,
+    "account": 0,
+    "fakultas": 6
+  },
+  {
+    "name": "sistem informasi",
+    "kode": 57201,
+    "jenjang": "S1",
+    "username": "sisteminformasi",
+    "password": "0f2goprla1",
+    "role": 5,
+    "account": 0,
+    "fakultas": 6
+  },
+  {
+    "name": "agroteknologi psdku morowali",
+    "kode": 54212,
+    "jenjang": "S1",
+    "username": "psdkuagroteknologi",
+    "password": "mw521ceicw",
+    "role": 5,
+    "account": 0,
+    "fakultas": 13
+  },
+  {
+    "name": "manajemen psdku morowali",
+    "kode": 61271,
+    "jenjang": "S1",
+    "username": "psdkumanajemenmorowali",
+    "password": "j21a7hnwzb",
+    "role": 5,
+    "account": 0,
+    "fakultas": 13
+  },
+  {
+    "name": "teknik sipil psdku morowali",
+    "kode": 22211,
+    "jenjang": "S1",
+    "username": "psdkusipilmorowali",
+    "password": "ezn3t0ffgm",
+    "role": 5,
+    "account": 0,
+    "fakultas": 13
+  },
+  {
+    "name": "manajemen psdku tojo una-una",
+    "kode": 61272,
+    "jenjang": "S1",
+    "username": "psdkumanajementouna",
+    "password": "puv8iwup7i",
+    "role": 5,
+    "account": 0,
+    "fakultas": 14
+  },
+  {
+    "name": "teknik sipil psdku tojo una-una",
+    "kode": 22212,
+    "jenjang": "S1",
+    "username": "psdkusipiltouna",
+    "password": "wmdytet6d0",
+    "role": 5,
+    "account": 0,
+    "fakultas": 14
+  },
+  {
+    "name": "agroteknologi psdku tojo una-una",
+    "kode": 54213,
+    "jenjang": "S1",
+    "username": "psdkuagroteknologitouna",
+    "password": "z26rqdpnyz",
+    "role": 5,
+    "account": 0,
+    "fakultas": 14
+  }
+]
