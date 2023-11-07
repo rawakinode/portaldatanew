@@ -1,16 +1,16 @@
 
-function tampilkan_chart(mahasiswa, nama, total) {
+function tampilkan_chart(label, dataset, total) {
     document.getElementById("totaldata").innerText = total;
 
     const ctx = document.getElementById("myChart");
     const myChart = new Chart(ctx, {
         type: "bar",
         data: {
-            labels: nama,
+            labels: label,
             datasets: [
                 {
                     label: "Jumlah Mahasiswa",
-                    data: mahasiswa,
+                    data: dataset,
                     backgroundColor: "yellow",
                     borderColor: "white",
                     borderWidth: 1,
@@ -123,12 +123,12 @@ function tampilkan_chart_kedua(label,dataset) {
     });
 }
 
-function tampilkan_chart_ketiga(dataset) {
+function tampilkan_chart_ketiga(label, dataset) {
     const chart_id = document.getElementById("kelamin_chart");
     const chart = new Chart(chart_id, {
         type: "pie",
         data: {
-            labels: ["Laki-laki", "Perempuan"],
+            labels: label,
             datasets: [
                 {
                     label: "Jenis Kelamin",
@@ -157,12 +157,12 @@ function tampilkan_chart_ketiga(dataset) {
     });
 }
 
-function tampilkan_chart_keempat(dataset) {
+function tampilkan_chart_keempat(label, dataset) {
     const chart_id = document.getElementById("ipk_chart");
     const chart_ipk = new Chart(chart_id, {
         type: "bar",
         data: {
-            labels: ["0.00 - 2.00", "2.01 - 2.50", "2.51 - 3.00", "3.01 - 3.50", "3.51 - 4.00"],
+            labels: label,
             datasets: [
                 {
                     label: "Jumlah Berdasarkan IPK",

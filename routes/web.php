@@ -87,7 +87,8 @@ Route::get('/testing', [TestingController::class, 'index']);
 Route::post('/data/prodi_list', [PortalDataController::class, 'get_prodi'])->name('get-prodi-list');
 
 Route::get('/data/mahasiswa/aktif', [PortalMahasiswaController::class, 'index_aktif']);
-Route::post('/data/mahasiswa/aktif', [PortalMahasiswaController::class, 'mahasiswa_aktif_get'])->name('mahasiswa_aktif_get');
+//Route::post('/data/mahasiswa/aktif', [PortalMahasiswaController::class, 'mahasiswa_aktif_get'])->name('mahasiswa_aktif_get');
+ Route::post('/data/mahasiswa/aktif', [PortalMahasiswaController::class, 'getMahasiswaAktif'])->name('get_mahasiswa_aktif');
 
 Route::get('/data/mahasiswa/baru', [MahasiswaBaruController::class, 'index']);
 Route::post('/data/mahasiswa/baru', [MahasiswaBaruController::class, 'get_data'])->name('mahasiswa_baru_get');

@@ -18,7 +18,8 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         // $schedule->command('rekap-data-universitas')->everyMinute();
-        $schedule->command('rekap-data-universitas')->hourly();
+        $schedule->command('rekap-data-universitas')->cron('0 0,6,12,18 * * *');
+        $schedule->command('hitung:mahasiswa-aktif')->cron('0 0,6,12,18 * * *');
         //$schedule->command('prodi-rekap-mahasiswa-aktif')->hourly();
     }
 

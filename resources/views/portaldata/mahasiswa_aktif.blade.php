@@ -90,9 +90,6 @@
                         <button type="button" name="submit" id="submit" hidden>SUBMIT</button>
                     </div>
                 </form>
-                <div style="text-align: center; margin-top:2rem;">
-                    Memuat data ...
-                </div>
                 <div class="row mt-5" id="maindata">
                     <div class="col-12 col-md-4 text-center">
                         <h1 style="font-size: 50pt;color:aliceblue" id="totaldata">0</h1>
@@ -373,9 +370,7 @@
 
                 const nama = m[o].nama;
                 const id = m[o].id;
-
                 var h = '<option value="' + id + '">' + nama + '</option>';
-
                 $('#prodi').append(h);
 
             }
@@ -420,7 +415,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: "{{ route('mahasiswa_aktif_get') }}",
+                url: "{{ route('get_mahasiswa_aktif') }}",
                 data: {
                     status: status,
                     prodi: prodi,
@@ -431,242 +426,52 @@
                 },
                 dataType: 'json',
                 success: function(data) {
-                    prosesData(data, fakultas);
+                    prosesData(data);
                 }
             });
         }
 
         //Fungsi untuk memproses data yang telah didapatkan dari AJAX dan menampilkan dalam grafik
-        function prosesData(e, b) {
+        function prosesData(e) {
 
-            let m = e.data;
-            let s = e.status;
-            let label = [];
-            let dataset = [];
-            let label_angkatan = [];
-            let dataset_angkatan = [];
-            var totalstatus = 0;
-            let label_jalur = [];
-            let dataset_jalur = [];
-            let dataset_kelamin = [];
-            let dataset_ipk = [];
+            let data = e.data;
+            let chart = e.chart;
 
+            //Tampilkan Chart
+            tampilkan_chart(chart.label, chart.value, chart.total);
+            tampilkan_chart_pertama(data.tahun_masuk.chart.label, data.tahun_masuk.chart.value);
+            tampilkan_chart_kedua(data.jalur_masuk.chart.label, data.jalur_masuk.chart.value);
+            tampilkan_chart_ketiga(data.jenis_kelamin.chart.label, data.jenis_kelamin.chart.value);
+            tampilkan_chart_keempat(data.ipk.chart.label, data.ipk.chart.value);
+    
 
-            if (b == 0) {
-
-                for (let i = 0; i < m.length; i++) {
-                    const fak = m[i].name;
-                    label.push(fak);
-                    dataset.push(m[i].total_status_mahasiswa);
-                    totalstatus += m[i].total_status_mahasiswa;
-                }
-
-                // Chart 1 Angkatan
-                s.angkatan = s.angkatan.sort(function(a, b) {
-                    return a.angkatan - b.angkatan;
-                });
-
-                console.log(s)
-
-                for (let i = 0; i < s.angkatan.length; i++) {
-                    const nt = s.angkatan[i];
-                    label_angkatan.push(nt.tahun);
-                    dataset_angkatan.push(nt.total);
-                    $('#angkatan').append('<tr><td>' + nt.tahun + '</td><td>' + nt.pria + '</td><td>' + nt.wanita +
-                        '</td><td>' + nt.total + '</td></tr>');
-                }
-
-                //Chart dan Tabel 2 Jalur masuk
-                add_tabel_jalur_masuk(s.jalurmasuk);
-                label_jalur.push((s.jalurmasuk.snmptn.jalur).toUpperCase());
-                label_jalur.push((s.jalurmasuk.sbmptn.jalur).toUpperCase());
-                label_jalur.push((s.jalurmasuk.smmptn.jalur).toUpperCase());
-                label_jalur.push((s.jalurmasuk.lainnya.jalur).toUpperCase());
-                dataset_jalur.push(s.jalurmasuk.snmptn.total);
-                dataset_jalur.push(s.jalurmasuk.sbmptn.total);
-                dataset_jalur.push(s.jalurmasuk.smmptn.total);
-                dataset_jalur.push(s.jalurmasuk.lainnya.total);
-
-                //Chart dan Tabel Kelamin
-                for (let i = 0; i < m.length; i++) {
-                    const fc = m[i];
-                    $('#kelamin').append('<tr><td>' + fc.name + '</td><td>' + fc.status.jeniskelamin.pria + '</td><td>' + fc
-                        .status.jeniskelamin.wanita + '</td><td>' + fc.status.jeniskelamin.total + '</td></tr>');
-                }
-                dataset_kelamin.push(s.jeniskelamin.pria);
-                dataset_kelamin.push(s.jeniskelamin.wanita);
-
-                //Chart dan Tabel IPK
-                $('#ipk').append('<tr><td>0.00 - 2.00</td><td>'+s.ipk.a+'</td></tr>');
-                $('#ipk').append('<tr><td>2.01 - 2.50</td><td>'+s.ipk.b+'</td></tr>');
-                $('#ipk').append('<tr><td>2.51 - 3.00</td><td>'+s.ipk.c+'</td></tr>');
-                $('#ipk').append('<tr><td>3.01 - 3.50</td><td>'+s.ipk.d+'</td></tr>');
-                $('#ipk').append('<tr><td>3.51 - 4.00</td><td>'+s.ipk.e+'</td></tr>');
-
-                dataset_ipk.push(s.ipk.a);
-                dataset_ipk.push(s.ipk.b);
-                dataset_ipk.push(s.ipk.c);
-                dataset_ipk.push(s.ipk.d);
-                dataset_ipk.push(s.ipk.e);
-
-            } else {
-
-                let n = m[0].prodi;
-                let fak = m[0];
-                let prodi_terpilih = [];
-
-                var prodi = document.querySelector('#prodi').value;
-
-                if (prodi != '') {
-                    for (let i = 0; i < n.length; i++) {
-                        const element = n[i];
-                        if (element.id == prodi) {
-                            prodi_terpilih.push(element);
-                        }
-                    }
-                    n = prodi_terpilih;
-
-                    //Chart angkatan tabel angkatan
-                    n[0].status.angkatan = n[0].status.angkatan.sort(function(a, b) {
-                        return a.angkatan - b.angkatan;
-                    });
-
-                    for (let i = 0; i < n[0].status.angkatan.length; i++) {
-                        const nt = n[0].status.angkatan[i];
-                        label_angkatan.push(nt.tahun);
-                        dataset_angkatan.push(nt.total);
-                        $('#angkatan').append('<tr><td>' + nt.tahun + '</td><td>' + nt.pria + '</td><td>' + nt.wanita +
-                            '</td><td>' + nt.total + '</td></tr>');
-                    }
-
-                    //Chart dan Tabel Jalur Masuk
-                    add_tabel_jalur_masuk(n[0].status.jalurmasuk);
-                    label_jalur.push((n[0].status.jalurmasuk.snmptn.jalur).toUpperCase());
-                    label_jalur.push((n[0].status.jalurmasuk.sbmptn.jalur).toUpperCase());
-                    label_jalur.push((n[0].status.jalurmasuk.smmptn.jalur).toUpperCase());
-                    label_jalur.push((n[0].status.jalurmasuk.lainnya.jalur).toUpperCase());
-                    dataset_jalur.push(n[0].status.jalurmasuk.snmptn.total);
-                    dataset_jalur.push(n[0].status.jalurmasuk.sbmptn.total);
-                    dataset_jalur.push(n[0].status.jalurmasuk.smmptn.total);
-                    dataset_jalur.push(n[0].status.jalurmasuk.lainnya.total);
-
-                    //Chart dan Tabel Jenis Kelamin
-                    var pr = 0;
-                    var wn = 0;
-                    for (let i = 0; i < n.length; i++) {
-                        const fc = n[i];
-                        $('#kelamin').append('<tr><td style="text-transform:capitalize;">' + fc.nama + '</td><td>' + fc
-                            .status.jeniskelamin.pria +
-                            '</td><td>' + fc.status.jeniskelamin.wanita + '</td><td>' + fc.status.jeniskelamin.total +
-                            '</td></tr>');
-                        pr += fc.status.jeniskelamin.pria;
-                        wn += fc.status.jeniskelamin.wanita;
-                    }
-                    dataset_kelamin.push(pr);
-                    dataset_kelamin.push(wn);
-
-                    //Chart dan Tabel IPK
-                    $('#ipk').append('<tr><td>0.00 - 2.00</td><td>'+n[0].status.ipk.a+'</td></tr>');
-                    $('#ipk').append('<tr><td>2.01 - 2.50</td><td>'+n[0].status.ipk.b+'</td></tr>');
-                    $('#ipk').append('<tr><td>2.51 - 3.00</td><td>'+n[0].status.ipk.c+'</td></tr>');
-                    $('#ipk').append('<tr><td>3.01 - 3.50</td><td>'+n[0].status.ipk.d+'</td></tr>');
-                    $('#ipk').append('<tr><td>3.51 - 4.00</td><td>'+n[0].status.ipk.e+'</td></tr>');
-
-                    dataset_ipk.push(n[0].status.ipk.a);
-                    dataset_ipk.push(n[0].status.ipk.b);
-                    dataset_ipk.push(n[0].status.ipk.c);
-                    dataset_ipk.push(n[0].status.ipk.d);
-                    dataset_ipk.push(n[0].status.ipk.e);
-
-                }
-
-                //chart dan total data 1
-                for (let c = 0; c < n.length; c++) {
-                    label.push(n[c].nama);
-                    dataset.push(n[c].total_status_mahasiswa);
-                    totalstatus += n[c].total_status_mahasiswa;
-                }
-
-                //chart dan tabel 2 Angkatan
-                if (prodi == '') {
-                    fak.status.angkatan = fak.status.angkatan.sort(function(a, b) {
-                        return a.angkatan - b.angkatan;
-                    });
-
-                    for (let i = 0; i < fak.status.angkatan.length; i++) {
-                        const nt = fak.status.angkatan[i];
-                        label_angkatan.push(nt.tahun);
-                        dataset_angkatan.push(nt.total);
-                        $('#angkatan').append('<tr><td>' + nt.tahun + '</td><td>' + nt.pria + '</td><td>' + nt.wanita +
-                            '</td><td>' + nt.total + '</td></tr>');
-                    }
-                }
-
-                //chart dan tabel 3 Jalurmasuk
-                if (prodi == '') {
-                    add_tabel_jalur_masuk(fak.status.jalurmasuk);
-                    label_jalur.push((fak.status.jalurmasuk.snmptn.jalur).toUpperCase());
-                    label_jalur.push((fak.status.jalurmasuk.sbmptn.jalur).toUpperCase());
-                    label_jalur.push((fak.status.jalurmasuk.smmptn.jalur).toUpperCase());
-                    label_jalur.push((fak.status.jalurmasuk.lainnya.jalur).toUpperCase());
-                    dataset_jalur.push(fak.status.jalurmasuk.snmptn.total);
-                    dataset_jalur.push(fak.status.jalurmasuk.sbmptn.total);
-                    dataset_jalur.push(fak.status.jalurmasuk.smmptn.total);
-                    dataset_jalur.push(fak.status.jalurmasuk.lainnya.total);
-                }
-
-                if (prodi == '') {
-                    //Chart dan Tabel Jenis Kelamin
-                    var pr = 0;
-                    var wn = 0;
-                    for (let i = 0; i < n.length; i++) {
-                        const fc = n[i];
-                        $('#kelamin').append('<tr><td style="text-transform:capitalize;">' + fc.nama + '</td><td>' + fc
-                            .status.jeniskelamin.pria +
-                            '</td><td>' + fc.status.jeniskelamin.wanita + '</td><td>' + fc.status.jeniskelamin.total +
-                            '</td></tr>');
-                        pr += fc.status.jeniskelamin.pria;
-                        wn += fc.status.jeniskelamin.wanita;
-                    }
-                    dataset_kelamin.push(pr);
-                    dataset_kelamin.push(wn);
-                }
-
-                if (prodi == '') {
-                    //Chart dan Tabel IPK
-                    $('#ipk').append('<tr><td>0.00 - 2.00</td><td>'+fak.status.ipk.a+'</td></tr>');
-                    $('#ipk').append('<tr><td>2.01 - 2.50</td><td>'+fak.status.ipk.b+'</td></tr>');
-                    $('#ipk').append('<tr><td>2.51 - 3.00</td><td>'+fak.status.ipk.c+'</td></tr>');
-                    $('#ipk').append('<tr><td>3.01 - 3.50</td><td>'+fak.status.ipk.d+'</td></tr>');
-                    $('#ipk').append('<tr><td>3.51 - 4.00</td><td>'+fak.status.ipk.e+'</td></tr>');
-
-                    dataset_ipk.push(fak.status.ipk.a);
-                    dataset_ipk.push(fak.status.ipk.b);
-                    dataset_ipk.push(fak.status.ipk.c);
-                    dataset_ipk.push(fak.status.ipk.d);
-                    dataset_ipk.push(fak.status.ipk.e);
-                }
+            for (let i = 0; i < data.tahun_masuk.tabel.length; i++) {
+                const e = data.tahun_masuk.tabel[i];
+                $('#angkatan').append('<tr><td>' + e.tahun + '</td><td>' + e.pria + '</td><td>' + e.wanita +
+                '</td><td>' + e.total + '</td></tr>');
             }
 
-            //menampilkan total data
-            tampilkan_chart(dataset, label, totalstatus);
-            tampilkan_chart_pertama(label_angkatan, dataset_angkatan);
-            tampilkan_chart_kedua(label_jalur, dataset_jalur);
-            tampilkan_chart_ketiga(dataset_kelamin);
-            tampilkan_chart_keempat(dataset_ipk);
+            for (let i = 0; i < data.jalur_masuk.tabel.length; i++) {
+                const e = data.jalur_masuk.tabel[i];
+                $('#jalurmasuk').append('<tr><td style="text-transform: uppercase;">' + e.jalur +
+                '</td><td>' + e.cowo + '</td><td>' + e.cewe + '</td><td>' + e.total + '</td></tr>');
+                
+            }
+
+            for (let i = 0; i < data.jenis_kelamin.tabel.length; i++) {
+                const e = data.jenis_kelamin.tabel[i];
+                $('#kelamin').append('<tr><td>' + e.unit + '</td><td>' + e.pria + '</td><td>' + e.wanita + '</td><td>' + e.total + '</td></tr>');
+            }
+
+            let ipks = data.ipk.tabel;
+            $('#ipk').append('<tr><td>0.00 - 2.00</td><td>' + ipks[0] + '</td></tr>');
+            $('#ipk').append('<tr><td>2.01 - 2.50</td><td>' + ipks[1] + '</td></tr>');
+            $('#ipk').append('<tr><td>2.51 - 3.00</td><td>' + ipks[2] + '</td></tr>');
+            $('#ipk').append('<tr><td>3.01 - 3.50</td><td>' + ipks[3] + '</td></tr>');
+            $('#ipk').append('<tr><td>3.51 - 4.00</td><td>' + ipks[4] + '</td></tr>');
+
         }
 
-        function add_tabel_jalur_masuk(e) {
-            $('#jalurmasuk').append('<tr><td style="text-transform: uppercase;">' + e.snmptn.jalur +
-                '</td><td>' + e.snmptn.cowo + '</td><td>' + e.snmptn.cewe + '</td><td>' + e.snmptn.total + '</td></tr>');
-            $('#jalurmasuk').append('<tr><td style="text-transform: uppercase;">' + e.sbmptn.jalur +
-                '</td><td>' + e.sbmptn.cowo + '</td><td>' + e.sbmptn.cewe + '</td><td>' + e.sbmptn.total + '</td></tr>');
-            $('#jalurmasuk').append('<tr><td style="text-transform: uppercase;">' + e.smmptn.jalur +
-                '</td><td>' + e.smmptn.cowo + '</td><td>' + e.smmptn.cewe + '</td><td>' + e.smmptn.total + '</td></tr>');
-            $('#jalurmasuk').append('<tr><td style="text-transform: uppercase;">' + e.lainnya.jalur +
-                '</td><td>' + e.lainnya.cowo + '</td><td>' + e.lainnya.cewe + '</td><td>' + e.lainnya.total +
-                '</td></tr>');
-        }
     </script>
 
     <script src="{{ asset('assets/javascript/mahasiswa/chart.js') }}"></script>

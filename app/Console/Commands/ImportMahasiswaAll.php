@@ -54,6 +54,23 @@ class ImportMahasiswaAll extends Command
             return intval($i->tahun_masuk) > 2014;
         })->values();
 
+        $m = Mahasiswa::latest('id')->first()->nim;
+
+        $last = 0;
+        foreach ($mahasiswaCollection as $key => $value) {
+            if ($m == $value->nim) {
+                $last = $key + 1;
+            }
+        }
+
+        if ($last == 0) {
+            $this->info("Tidak ada Id terakhir di database mahasiswa .");
+            return 0;
+        }
+
+        //Memotong Collection Pada last index
+        $mahasiswaCollection = $mahasiswaCollection->slice($last);
+
         $con = 0;
         $count_success = 0;
         $count_error = 0;

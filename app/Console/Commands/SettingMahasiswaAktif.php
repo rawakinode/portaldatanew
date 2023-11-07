@@ -2,6 +2,9 @@
 
 namespace App\Console\Commands;
 
+use App\Models\PortalMahasiswaAktif;
+use App\Models\Prodi;
+use App\Models\StatusMahasiswa;
 use Illuminate\Console\Command;
 
 class SettingMahasiswaAktif extends Command
@@ -37,6 +40,56 @@ class SettingMahasiswaAktif extends Command
      */
     public function handle()
     {
-        return 0;
+        $prodi = Prodi::all();
+
+        // $prodi = 44201;
+        $semester = 20221;
+
+        $time_start = new \DateTime();
+        
+        foreach ($prodi as $item) {
+
+            $this->info("Menghitung mahasiswa prodi : ". $item->nama);
+
+            $kodeprodi = $item->kode;
+            $aktif = StatusMahasiswa::whereHas('mahasiswa', function($query) use ($kodeprodi){
+                $query->where('kode_prodi', $kodeprodi);
+            })->where('status', 'aktif')->where('tahun', substr($semester, 0,4))->where('semester', substr($semester, -1))->get();
+    
+            $nonaktif = StatusMahasiswa::whereHas('mahasiswa', function($query) use ($kodeprodi){
+                $query->where('kode_prodi', $kodeprodi);
+            })->where('status', 'nonaktif')->where('tahun', substr($semester, 0,4))->where('semester', substr($semester, -1))->get();
+    
+            $cuti = StatusMahasiswa::whereHas('mahasiswa', function($query) use ($kodeprodi){
+                $query->where('kode_prodi', $kodeprodi);
+            })->where('status', 'cuti')->where('tahun', substr($semester, 0,4))->where('semester', substr($semester, -1))->get();
+
+            $check = PortalMahasiswaAktif::where('kode_prodi', $kodeprodi)->where('tahun', substr($semester, 0,4))->where('semester', substr($semester, -1))->first();
+
+            if (!$check) {
+                PortalMahasiswaAktif::create([
+                    "kode_prodi" => $kodeprodi,
+                    "fakultas" => $item->fakultas,
+                    "jenjang" => $item->jenjang,
+                    "tahun" => substr($semester, 0,4),
+                    "semester" => substr($semester, -1),
+                    "aktif" => count($aktif),
+                    "nonaktif" => count($nonaktif),
+                    "cuti" => count($cuti),
+                ]);
+            }else{
+                $check->update([
+                    "aktif" => count($aktif),
+                    "nonaktif" => count($nonaktif),
+                    "cuti" => count($cuti),
+                ]);
+            }
+        }
+        
+
+        $time_end = new \DateTime();
+        $execution_time = $time_start->diff($time_end)->format('%H:%I:%S');
+        
+        $this->info("Selesai dalam : " . $execution_time);
     }
 }
