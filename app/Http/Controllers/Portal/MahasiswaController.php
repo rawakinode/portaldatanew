@@ -191,27 +191,37 @@ class MahasiswaController extends Controller
                 $df = Prodi::where('fakultas', $fk)->get();
                 foreach ($df as $d) {
                     $b = $akt->where('kode_prodi', $d->kode)->first();
-                    $jenis_kelamin_chart_value_pria += $b->jenis_kelamin->pria ?? 0;
-                    $jenis_kelamin_chart_value_wanita += $b->jenis_kelamin->wanita ?? 0;
+                    $jenis_kelamin_chart_value_pria += $b->jenis_kelamin->pria;
+                    $jenis_kelamin_chart_value_wanita += $b->jenis_kelamin->wanita;
+
                     $jenis_kelamin_chart_tabel->push([
                         "unit" => $d->nama,
-                        "pria" => $b->jenis_kelamin->pria ?? 0,
-                        "wanita" => $b->jenis_kelamin->wanita ?? 0,
-                        "total" => $b->jenis_kelamin->total ?? 0,
+                        "pria" => $b->jenis_kelamin->pria,
+                        "wanita" => $b->jenis_kelamin->wanita,
+                        "total" => $b->jenis_kelamin->total,
                     ]);
                 }
 
             }else{
                 $df = Faculty::all();
                 foreach ($df as $d) {
-                    $b = $akt->where('fakultas', $d->code)->first();
-                    $jenis_kelamin_chart_value_pria += $b->jenis_kelamin->pria ?? 0;
-                    $jenis_kelamin_chart_value_wanita += $b->jenis_kelamin->wanita ?? 0;
+
+                    $b = $akt->where('fakultas', $d->code);
+                    $jk_p = 0;
+                    $jk_w = 0;
+
+                    foreach ($b as $bp) {
+                        $jenis_kelamin_chart_value_pria += $bp->jenis_kelamin->pria;
+                        $jenis_kelamin_chart_value_wanita += $bp->jenis_kelamin->wanita;
+                        $jk_p += $bp->jenis_kelamin->pria;
+                        $jk_w += $bp->jenis_kelamin->wanita;
+                    };
+
                     $jenis_kelamin_chart_tabel->push([
                         "unit" => $d->name,
-                        "pria" => $b->jenis_kelamin->pria ?? 0,
-                        "wanita" => $b->jenis_kelamin->wanita ?? 0,
-                        "total" => $b->jenis_kelamin->total ?? 0,
+                        "pria" => $jk_p,
+                        "wanita" => $jk_w,
+                        "total" => $jk_p + $jk_w,
                     ]);
                 }
             }

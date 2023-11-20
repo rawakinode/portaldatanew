@@ -15,4 +15,9 @@ class StatusMahasiswa extends Model
     {
         return $this->hasOne(Mahasiswa::class, 'id', 'mahasiswa_id');
     }
+
+    public function prodi()
+    {
+        return $this->belongsTo(Prodi::class, 'kode_prodi', 'kode');
+    }
 }

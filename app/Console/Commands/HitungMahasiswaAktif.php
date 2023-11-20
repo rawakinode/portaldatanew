@@ -46,7 +46,8 @@ class HitungMahasiswaAktif extends Command
 
             $this->info("Menghitung status mahasiswa prodi : " . $pd->nama);
             
-            $periode = collect([2022, 2021, 2020, 2019, 2018, 2017, 2016]);
+            $periode = collect([2022,2021,2020,2019,2018,2017]);
+            
             foreach ($periode as $pr) {
 
                 $semester = collect([1, 2]);
@@ -60,12 +61,11 @@ class HitungMahasiswaAktif extends Command
                             ->where('tahun', $pr)
                             ->where('semester', $sm)
                             ->where('kode_prodi', $pd->kode)
-                            ->with(['mahasiswa' => function ($query) {
-                                return $query->with('prodi');
-                            }])->get();
+                            ->with(['mahasiswa', 'prodi'])
+                            ->get();
 
                         $aktivitas = $aktivitas->filter(function ($i) {
-                            return isset($i->mahasiswa->prodi->jenjang);
+                            return isset($i->prodi->jenjang);
                         });
 
                         $data = $this->hitung_data($aktivitas, $pr, $pd->kode);
@@ -125,7 +125,7 @@ class HitungMahasiswaAktif extends Command
     {
 
         $a = $aktivitas->filter(function ($i) use ($prodi) {
-            return $i->mahasiswa->prodi->kode == $prodi;
+            return $i->kode_prodi == $prodi;
         });
 
         //Tahun Angkatan
@@ -168,10 +168,10 @@ class HitungMahasiswaAktif extends Command
         //Jenis Kelamin
         $kelamin = collect(
             [
-                'pria' => $a->filter(function ($i) use ($item) {
+                'pria' => $a->filter(function ($i) {
                     return $i->mahasiswa->kelamin == 1;
                 })->count(),
-                'wanita' => $a->filter(function ($i) use ($item) {
+                'wanita' => $a->filter(function ($i) {
                     return $i->mahasiswa->kelamin == 0;
                 })->count(),
                 'total' => $a->count(),

@@ -49,8 +49,6 @@ class ImportPerkuliahan extends Command
          // Mengubah JSON menjadi koleksi (collection)
          $collection = collect(json_decode($jsonString));
 
-         $collection = $collection[0];
-
          $counter = 0;
          $sukses = 0;
          $gagal = 0;
@@ -66,7 +64,7 @@ class ImportPerkuliahan extends Command
 
          foreach ($collection as $value) {
             $counter++;
-            $this->line($counter . ' / ' .count($collection));
+            $this->info($counter . ' / ' .count($collection));
 
             try {
                 $cek_mhs = Mahasiswa::where('nim', $value->nipd)->first();

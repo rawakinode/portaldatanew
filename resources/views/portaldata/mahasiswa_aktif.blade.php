@@ -32,7 +32,7 @@
                             <select class="form-select" aria-label="tahun periode" name="tahun" onchange="selectTahun()">
                                 <option value="20222">Genap 2022/2023</option>
                                 <option value="20221">Ganjil 2022/2023</option>
-                                <option value="20212">Genap 2021/2022</option>
+                                <option value="20212" selected>Genap 2021/2022</option>
                                 <option value="20211">Ganjil 2021/2022</option>
                                 <option value="20202">Genap 2020/2021</option>
                                 <option value="20201">Ganjil 2020/2021</option>
