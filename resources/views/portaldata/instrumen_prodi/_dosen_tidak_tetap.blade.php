@@ -29,7 +29,7 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item['nama'] }}</td>
                                     <td>{{ $item['nidn'] }}</td>
-                                    <td>{{ $item['pendidikan'] == 1 ? 'S1' : $item['pendidikan'] == 2 ? 'S2' : $item['pendidikan'] == 3 ? 'S3' : ''}}</td>
+                                    <td>{{ $item['pendidikan'] == 1 ? 'S1' : ($item['pendidikan'] == 2 ? 'S2' : ($item['pendidikan'] == 3 ? 'S3' : '')) }}</td>
                                     <td>{{ $item['pascasarjana'] }}</td>
                                     <td>{{ $item['bidang_keahlian'] }}</td>
                                     <td>

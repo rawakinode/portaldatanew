@@ -8,7 +8,7 @@
                 <thead style="background-color: #e7ecff;color:#002f67" class="text-center">
                     <tr>
                         <th rowspan="2">Tahun Masuk</th>
-                        <th colspan="7">Jumlah Mahasiswa Lulus per Angkatan pada Tahun</th>
+                        <th colspan="7">Jumlah Mahasiswa per Angkatan pada Tahun</th>
                         <th rowspan="2">Jumlah Lulusan s.d. Akhir TS</th>
                     </tr>
                     <tr>

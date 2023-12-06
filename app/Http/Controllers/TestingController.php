@@ -18,58 +18,63 @@ class TestingController extends Controller
     public function index()
     {
 
-        $path = public_path('json/mahasiswa_keluar/semua.json');
-        $getfile = File::get($path);
-        $collection = collect(json_decode($getfile));
+        $sel3 = 100;
+        $cari_yang_hilang = Mahasiswa::where('kode_prodi', 44201)->where('tahun_masuk', 2019)->where('tanggal_yudisium', null)->where('status_keluar', null)->get()->shuffle()->take($sel3)->values();
 
-        $berhasil = 0;
-        $gagal = 0;
+        return $cari_yang_hilang;
 
-        foreach ($collection as $m) {
-            try {
-                $s = Mahasiswa::where('nim', $m->nim)->first();
-                if ($s) {
+        // $path = public_path('json/mahasiswa_keluar/semua.json');
+        // $getfile = File::get($path);
+        // $collection = collect(json_decode($getfile));
 
-                    $status = null;
-                    if ($m->status == "Lulus") {
-                        $status = "lulus";
-                    } else if ($m->status == "Mengundurkan diri") {
-                        $status = "mengundurkan diri";
-                    } else if ($m->status == "Dikeluarkan") {
-                        $status = "dropout";
-                    } else if ($m->status == "Hilang") {
-                        $status = "hilang";
-                    } else if ($m->status == "Lainnya") {
-                        $status = "lainnya";
-                    } else if ($m->status == "Mutasi") {
-                        $status = "lainnya";
-                    } else if ($m->status == "Wafat") {
-                        $status = "lainnya";
-                    } else if ($m->status == "Putus Studi") {
-                        $status = "lainnya";
-                    }
+        // $berhasil = 0;
+        // $gagal = 0;
 
-                    try {
-                        $date = Carbon::parse($m->yudisium);
-                        $date = $date->format('Y-m-d');
-                    } catch (\Throwable $th) {
-                        $date = null;
-                    }
+        // foreach ($collection as $m) {
+        //     try {
+        //         $s = Mahasiswa::where('nim', $m->nim)->first();
+        //         if ($s) {
 
-                    $s->update([
-                        "status_keluar" => $status,
-                        "tanggal_yudisium" => $date,
-                        "ipk" => round($m->ipk, 2),
-                    ]);
+        //             $status = null;
+        //             if ($m->status == "Lulus") {
+        //                 $status = "lulus";
+        //             } else if ($m->status == "Mengundurkan diri") {
+        //                 $status = "mengundurkan diri";
+        //             } else if ($m->status == "Dikeluarkan") {
+        //                 $status = "dropout";
+        //             } else if ($m->status == "Hilang") {
+        //                 $status = "hilang";
+        //             } else if ($m->status == "Lainnya") {
+        //                 $status = "lainnya";
+        //             } else if ($m->status == "Mutasi") {
+        //                 $status = "lainnya";
+        //             } else if ($m->status == "Wafat") {
+        //                 $status = "lainnya";
+        //             } else if ($m->status == "Putus Studi") {
+        //                 $status = "lainnya";
+        //             }
 
-                    $berhasil++;
-                }
-            } catch (\Throwable $th) {
-                $gagal++;
-            }
-        }
+        //             try {
+        //                 $date = Carbon::parse($m->yudisium);
+        //                 $date = $date->format('Y-m-d');
+        //             } catch (\Throwable $th) {
+        //                 $date = null;
+        //             }
 
-        return "Berhasil : " . $berhasil . " / Gagal : " . $gagal; 
+        //             $s->update([
+        //                 "status_keluar" => $status,
+        //                 "tanggal_yudisium" => $date,
+        //                 "ipk" => round($m->ipk, 2),
+        //             ]);
+
+        //             $berhasil++;
+        //         }
+        //     } catch (\Throwable $th) {
+        //         $gagal++;
+        //     }
+        // }
+
+        // return "Berhasil : " . $berhasil . " / Gagal : " . $gagal; 
 
         // return $collection->count();
 

@@ -1130,81 +1130,30 @@ class RekapDataAkreditasiUniversitas extends Command
 
         $tabel = [];
 
-        $this->info("Memproses seleksi mahasiswa baru 2");
-        $mahasiswa_baru = Mahasiswa::where('daftar_ulang', 1)->whereIn('tahun_masuk', [$ts-0,$ts-1,$ts-2,$ts-3,$ts-4,$ts-5,$ts-6,$ts-7])->with('prodi')->get();
-        $this->info("Memproses seleksi mahasiswa baru 3");
-        $seleksi_mahasiswa = SeleksiMahasiswaBaru::with('prodi')->get();
-
         $this->info("Lakukan iterasi ..");
 
         foreach ($jenjang as $itemJenjang) {
+
             $this->info("Memproses jenjang " . $itemJenjang);
+
+            $prodi_get = Prodi::where('jenjang', $itemJenjang)->get();
+            $prodi_pluck = $prodi_get->pluck('kode');
 
             foreach ($tahun_ts as $i => $itemTahun) {
                 $this->info("Memproses tahun " . $itemTahun);
 
                 $ts_fix = $ts + $i - 4;
 
-                $status_mahasiswa = StatusMahasiswa::whereIn('tahun', [$ts_fix])->with(['mahasiswa' => function ($query) {
-                    return $query->with('prodi');
-                }])->get();
-
-                $maba_by_jenjang = $mahasiswa_baru->where('tahun_masuk', $ts_fix)->filter(function ($item) use ($itemJenjang) {
-                    if (isset($item->prodi->jenjang)) {
-                        return $item->prodi->jenjang == $itemJenjang;
-                    }
-                })->count();
-
-                $sel_mhs_by_jenjang_ts = $seleksi_mahasiswa->filter(function ($item) use ($itemJenjang, $ts_fix) {
-                    if (isset($item->prodi->jenjang)) {
-                        return $item->prodi->jenjang == $itemJenjang && $item->tahun == $ts_fix;
-                    }
-                });
-
-                $cek_sem = $status_mahasiswa->where('status', 'aktif')->where('tahun', $ts_fix)->where('semester', 2)->count();
-                // $tanggalMulaiAjaran = Carbon::create($ts_fix + 1, 2, 1);
-                // $tanggalAkhirAjaran = Carbon::create($ts_fix + 1, 8, 31);
-
-                if ($cek_sem != 0) {
-                    $cek_sem = 2;
-                } else {
-                    $cek_sem = 1;
-                    // $tanggalMulaiAjaran = Carbon::create($ts_fix, 9, 1);
-                    // $tanggalAkhirAjaran = Carbon::create($ts_fix + 1, 1, 31);
-                }
-
-                $aktif_by_tahun = $status_mahasiswa->filter(function($i) use ($itemJenjang){
-                    if (isset($i->mahasiswa->prodi->jenjang)) {
-                        return $i->mahasiswa->prodi->jenjang == $itemJenjang;
-                    }
-                });
-
-                $aktif_by_tahun = $aktif_by_tahun->where('status', 'aktif')->where('tahun', $ts_fix)->where('semester', $cek_sem)->count();
-
-                // $aktif_by_tahun = $aktif_by_tahun->where('status', 'aktif')->where('tahun', $ts_fix)->where('semester', $cek_sem)->filter(function ($i) use ($tanggalMulaiAjaran, $tanggalAkhirAjaran) {
-
-                //     if ($i->mahasiswa['tanggal_yudisium'] == null || $i->mahasiswa['tanggal_yudisium'] == 0) {
-                //         return $i;
-                //     }
-
-                //     $tanggalLulus = Carbon::parse($i->mahasiswa['tanggal_yudisium']);
-
-                //     if ($tanggalLulus->gte($tanggalMulaiAjaran) && $tanggalLulus->lte($tanggalAkhirAjaran)) {
-                //         return false;
-                //     }
-
-                //     return $i;
-                        
-                // })->count();
+                $seleksi_mahasiswas = SeleksiMahasiswaBaru::where('tahun', $ts_fix)->whereIn('kode_prodi', $prodi_pluck)->get();
 
                 $tabel[$itemJenjang][$itemTahun] = [
-                    'daya_tampung' => $sel_mhs_by_jenjang_ts->sum('daya_tampung'),
-                    'pendaftar' => $sel_mhs_by_jenjang_ts->sum('mahasiswa_mendaftar'),
-                    'lulus_seleksi' => $sel_mhs_by_jenjang_ts->sum('mahasiswa_lulus_seleksi'),
-                    'baru_reguler' => $maba_by_jenjang,
-                    'baru_transfer' => $sel_mhs_by_jenjang_ts->sum('mahasiswa_baru_transfer'),
-                    'reguler' => $aktif_by_tahun,
-                    'transfer' => $sel_mhs_by_jenjang_ts->sum('mahasiswa_aktif_transfer'),
+                    'daya_tampung' => $seleksi_mahasiswas->sum('daya_tampung'),
+                    'pendaftar' => $seleksi_mahasiswas->sum('mahasiswa_mendaftar'),
+                    'lulus_seleksi' => $seleksi_mahasiswas->sum('mahasiswa_lulus_seleksi'),
+                    'baru_reguler' => $seleksi_mahasiswas->sum('mahasiswa_baru_reguler'),
+                    'baru_transfer' => $seleksi_mahasiswas->sum('mahasiswa_baru_transfer'),
+                    'reguler' => $seleksi_mahasiswas->sum('mahasiswa_aktif_reguler'),
+                    'transfer' => $seleksi_mahasiswas->sum('mahasiswa_aktif_transfer'),
                 ];
             }
         }
@@ -1533,7 +1482,7 @@ class RekapDataAkreditasiUniversitas extends Command
         $tabel[0]['jumlah_prodi'] = Prodi::where('jenjang', 'S3')->count();
         $tabel[1]['jumlah_prodi'] = Prodi::where('jenjang', 'S2')->count();
         $tabel[2]['jumlah_prodi'] = Prodi::where('jenjang', 'PROF')->count();
-        $tabel[3]['jumlah_prodi'] = Prodi::where('jenjang', ['S1', 'D4'])->count();
+        $tabel[3]['jumlah_prodi'] = Prodi::whereIn('jenjang', ['S1', 'D4'])->count();
         $tabel[4]['jumlah_prodi'] = Prodi::where('jenjang', 'D3')->count();
         $tabel[5]['jumlah_prodi'] = Prodi::where('jenjang', 'D2')->count();
         $tabel[6]['jumlah_prodi'] = Prodi::where('jenjang', 'D1')->count();

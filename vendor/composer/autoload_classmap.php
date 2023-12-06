@@ -6,14 +6,18 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Console\\Commands\\HitungMahasiswaAktif' => $baseDir . '/app/Console/Commands/HitungMahasiswaAktif.php',
     'App\\Console\\Commands\\ImportDosenAll' => $baseDir . '/app/Console/Commands/ImportDosenAll.php',
     'App\\Console\\Commands\\ImportDosenAllKepegawaian' => $baseDir . '/app/Console/Commands/ImportDosenAllKepegawaian.php',
     'App\\Console\\Commands\\ImportMahasiswaAll' => $baseDir . '/app/Console/Commands/ImportMahasiswaAll.php',
+    'App\\Console\\Commands\\ImportMahasiswaKeluar' => $baseDir . '/app/Console/Commands/ImportMahasiswaKeluar.php',
     'App\\Console\\Commands\\ImportPerkuliahan' => $baseDir . '/app/Console/Commands/ImportPerkuliahan.php',
     'App\\Console\\Commands\\ProdiMahasiswaAktifCuti' => $baseDir . '/app/Console/Commands/ProdiMahasiswaAktifCuti.php',
     'App\\Console\\Commands\\RekapDataAkreditasiUniversitas' => $baseDir . '/app/Console/Commands/RekapDataAkreditasiUniversitas.php',
     'App\\Console\\Commands\\SettingDosenUniversitas' => $baseDir . '/app/Console/Commands/SettingDosenUniversitas.php',
+    'App\\Console\\Commands\\SettingLulusTepatWaktu' => $baseDir . '/app/Console/Commands/SettingLulusTepatWaktu.php',
     'App\\Console\\Commands\\SettingMahasiswaAktif' => $baseDir . '/app/Console/Commands/SettingMahasiswaAktif.php',
+    'App\\Console\\Commands\\Testing' => $baseDir . '/app/Console/Commands/Testing.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\API\\DosenHomebaseController' => $baseDir . '/app/Http/Controllers/API/DosenHomebaseController.php',
@@ -128,6 +132,7 @@ return array(
     'App\\Models\\SertifikasiAkreditasiExternal' => $baseDir . '/app/Models/SertifikasiAkreditasiExternal.php',
     'App\\Models\\StatusMahasiswa' => $baseDir . '/app/Models/StatusMahasiswa.php',
     'App\\Models\\Subpengaturan' => $baseDir . '/app/Models/Subpengaturan.php',
+    'App\\Models\\TSProdi' => $baseDir . '/app/Models/TSProdi.php',
     'App\\Models\\TracerStudy' => $baseDir . '/app/Models/TracerStudy.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',

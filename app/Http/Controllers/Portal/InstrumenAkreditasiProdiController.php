@@ -26,6 +26,7 @@ use App\Models\Publikasi;
 use App\Models\Rekognisi;
 use App\Models\SeleksiMahasiswaBaru;
 use App\Models\StatusMahasiswa;
+use App\Models\TSProdi;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -54,7 +55,11 @@ class InstrumenAkreditasiProdiController extends Controller
         }
 
         //Atur periode dan ts
-        $periode = Periode::where('status', 1)->first();
+        $periode = TSProdi::where('kode_prodi', $kodeprodi)->first();
+        if (!$periode) {
+            return "Error! Periode TS belum diatur.";
+        }
+        
         $ts = $periode['tahun'];
 
         //Mendapatkan daftar tabel instrumen yang di centang oleh prodi
@@ -83,60 +88,36 @@ class InstrumenAkreditasiProdiController extends Controller
                 $tahun_ts = [0, 1, 2, 3, 4];
                 $tabel = [];
 
-                $seleksi_mahasiswa = SeleksiMahasiswaBaru::where('kode_prodi', $kodeprodi)->orderBy('tahun', 'DESC')->with('prodi')->get();
-
-                $mahasiswa_baru = Mahasiswa::where('kode_prodi', $kodeprodi)->where('daftar_ulang', 1)->get();
-
-                $status_mahasiswa = StatusMahasiswa::where('kode_prodi', $kodeprodi)->whereStatus('aktif')->with(['mahasiswa' => function ($query) {
-                    return $query->with('prodi');
-                }])->get();
+                $seleksi_mahasiswa = SeleksiMahasiswaBaru::where('kode_prodi', $kodeprodi)->orderBy('tahun', 'DESC')->get();
 
                 foreach ($tahun_ts as $i => $value) {
 
                     $ts_fix = $ts + $i - 4;
 
-                    $seleksi = $seleksi_mahasiswa->where('tahun', $ts_fix);
-
-                    $maha_baru = $mahasiswa_baru->where('tahun_masuk', $ts_fix)->count();
-
-                    $cek_sem = $status_mahasiswa->where('status', 'aktif')->where('tahun', $ts_fix)->where('semester', 2)->count();
-                    $tanggalMulaiAjaran = Carbon::create($ts_fix + 1, 2, 1);
-                    $tanggalAkhirAjaran = Carbon::create($ts_fix + 1, 8, 31);
-
-                    if ($cek_sem != 0) {
-                        $cek_sem = 2;
-                    } else {
-                        $cek_sem = 1;
-                        $tanggalMulaiAjaran = Carbon::create($ts_fix, 9, 1);
-                        $tanggalAkhirAjaran = Carbon::create($ts_fix + 1, 1, 31);
+                    $seleksi = $seleksi_mahasiswa->where('tahun', $ts_fix)->first();
+                    if ($seleksi) {
+                        $tabel[] = [
+                            'daya_tampung' => $seleksi['daya_tampung'],
+                            'pendaftar' => $seleksi['mahasiswa_mendaftar'],
+                            'lulus_seleksi' => $seleksi['mahasiswa_lulus_seleksi'],
+                            'baru_reguler' => $seleksi['mahasiswa_baru_reguler'],
+                            'baru_transfer' => $seleksi['mahasiswa_baru_transfer'],
+                            'reguler' => $seleksi['mahasiswa_aktif_reguler'],
+                            'transfer' => $seleksi['mahasiswa_aktif_transfer'],
+                        ];
+                    }else{
+                        $tabel[] = [
+                            'daya_tampung' => 0,
+                            'pendaftar' => 0,
+                            'lulus_seleksi' => 0,
+                            'baru_reguler' => 0,
+                            'baru_transfer' => 0,
+                            'reguler' => 0,
+                            'transfer' => 0,
+                        ];
                     }
 
-                    $aktif_by_tahun = $status_mahasiswa->where('status', 'aktif')->where('tahun', $ts_fix)->where('semester', $cek_sem)->filter(function ($i) use ($tanggalMulaiAjaran, $tanggalAkhirAjaran) {
-
-                        if ($i->mahasiswa['tanggal_yudisium'] == null || $i->mahasiswa['tanggal_yudisium'] == 0) {
-                            return $i;
-                        }
-
-                        $tanggalLulus = Carbon::parse($i->mahasiswa['tanggal_yudisium']);
-
-                        if ($tanggalLulus->gte($tanggalMulaiAjaran) && $tanggalLulus->lte($tanggalAkhirAjaran)) {
-                            return false;
-                        }
-
-                        return $i;
-                    })->count();
-
-                    $tabel[] = [
-                        'daya_tampung' => $seleksi[0]['daya_tampung'] ?? 0,
-                        'pendaftar' => $seleksi[0]['mahasiswa_mendaftar'] ?? 0,
-                        'lulus_seleksi' => $seleksi[0]['mahasiswa_lulus_seleksi'] ?? 0,
-                        'baru_reguler' => $maha_baru,
-                        'baru_transfer' => $seleksi[0]['mahasiswa_baru_transfer'] ?? 0,
-                        'reguler' => $aktif_by_tahun,
-                        'transfer' => $seleksi[0]['mahasiswa_aktif_transfer'] ?? 0,
-                    ];
                 }
-
 
                 $data['seleksi_mahasiswa_baru'] = $tabel;
             }
@@ -787,7 +768,9 @@ class InstrumenAkreditasiProdiController extends Controller
                 for ($m = 0; $m < count($jumlah_ts); $m++) {
                     $rata_masa_studi = 0;
                     $total_days = 0;
-                    $mhs_masa_studi = $mahasiswa->where('tahun_masuk', $jumlah_ts[$m])->whereNotNull('tanggal_yudisium');
+                    $mhs_masa_studi = $mahasiswa->filter(function ($item) {
+                        return !is_null($item['tanggal_yudisium']) && Carbon::parse($item['tanggal_yudisium'])->year > 2000;
+                    });
 
                     if (count($mhs_masa_studi) > 0) {
                         foreach ($mhs_masa_studi as $ms) {
@@ -872,7 +855,7 @@ class InstrumenAkreditasiProdiController extends Controller
                             return $tanggalLulus->gte($tanggalMulaiAjaran) && $tanggalLulus->lte($tanggalAkhirAjaran);
                         })->count(),
 
-                        'jumlah_mahasiswa_diterima' => Mahasiswa::where('kode_prodi', $kodeprodi)->where('tahun_masuk', $jumlah_ts[$m])->where('daftar_ulang', 1)->count(),
+                        'jumlah_mahasiswa_diterima' => SeleksiMahasiswaBaru::where('kode_prodi', $kodeprodi)->where('tahun', $jumlah_ts[$m])->first()->mahasiswa_baru_reguler ?? 0,
 
                         'rata_masa_studi' => $rata_masa_studi,
                     ];

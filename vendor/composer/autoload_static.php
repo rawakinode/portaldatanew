@@ -538,14 +538,18 @@ class ComposerStaticInit94277dd3f3075a83e0693d6ac36c2b25
     );
 
     public static $classMap = array (
+        'App\\Console\\Commands\\HitungMahasiswaAktif' => __DIR__ . '/../..' . '/app/Console/Commands/HitungMahasiswaAktif.php',
         'App\\Console\\Commands\\ImportDosenAll' => __DIR__ . '/../..' . '/app/Console/Commands/ImportDosenAll.php',
         'App\\Console\\Commands\\ImportDosenAllKepegawaian' => __DIR__ . '/../..' . '/app/Console/Commands/ImportDosenAllKepegawaian.php',
         'App\\Console\\Commands\\ImportMahasiswaAll' => __DIR__ . '/../..' . '/app/Console/Commands/ImportMahasiswaAll.php',
+        'App\\Console\\Commands\\ImportMahasiswaKeluar' => __DIR__ . '/../..' . '/app/Console/Commands/ImportMahasiswaKeluar.php',
         'App\\Console\\Commands\\ImportPerkuliahan' => __DIR__ . '/../..' . '/app/Console/Commands/ImportPerkuliahan.php',
         'App\\Console\\Commands\\ProdiMahasiswaAktifCuti' => __DIR__ . '/../..' . '/app/Console/Commands/ProdiMahasiswaAktifCuti.php',
         'App\\Console\\Commands\\RekapDataAkreditasiUniversitas' => __DIR__ . '/../..' . '/app/Console/Commands/RekapDataAkreditasiUniversitas.php',
         'App\\Console\\Commands\\SettingDosenUniversitas' => __DIR__ . '/../..' . '/app/Console/Commands/SettingDosenUniversitas.php',
+        'App\\Console\\Commands\\SettingLulusTepatWaktu' => __DIR__ . '/../..' . '/app/Console/Commands/SettingLulusTepatWaktu.php',
         'App\\Console\\Commands\\SettingMahasiswaAktif' => __DIR__ . '/../..' . '/app/Console/Commands/SettingMahasiswaAktif.php',
+        'App\\Console\\Commands\\Testing' => __DIR__ . '/../..' . '/app/Console/Commands/Testing.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\API\\DosenHomebaseController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/DosenHomebaseController.php',
@@ -660,6 +664,7 @@ class ComposerStaticInit94277dd3f3075a83e0693d6ac36c2b25
         'App\\Models\\SertifikasiAkreditasiExternal' => __DIR__ . '/../..' . '/app/Models/SertifikasiAkreditasiExternal.php',
         'App\\Models\\StatusMahasiswa' => __DIR__ . '/../..' . '/app/Models/StatusMahasiswa.php',
         'App\\Models\\Subpengaturan' => __DIR__ . '/../..' . '/app/Models/Subpengaturan.php',
+        'App\\Models\\TSProdi' => __DIR__ . '/../..' . '/app/Models/TSProdi.php',
         'App\\Models\\TracerStudy' => __DIR__ . '/../..' . '/app/Models/TracerStudy.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
