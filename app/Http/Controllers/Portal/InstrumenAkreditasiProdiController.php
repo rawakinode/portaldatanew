@@ -218,7 +218,7 @@ class InstrumenAkreditasiProdiController extends Controller
                     }
 
                     $select_sumber = -1;
-                    if ($p['sumber_dana'] == 'mandiri' || $p['sumber'] == 'perguruan tinggi') {
+                    if ($p['sumber_dana'] == 'mandiri' || $p['sumber_dana'] == 'perguruan tinggi') {
                         $select_sumber = 0;
                     } else if ($p['sumber_dana'] == 'nasional') {
                         $select_sumber = 1;
@@ -266,7 +266,7 @@ class InstrumenAkreditasiProdiController extends Controller
                     }
 
                     $select_sumber = -1;
-                    if ($p['sumber_dana'] == 'mandiri' || $p['sumber'] == 'perguruan tinggi') {
+                    if ($p['sumber_dana'] == 'mandiri' || $p['sumber_dana'] == 'perguruan tinggi') {
                         $select_sumber = 0;
                     } else if ($p['sumber_dana'] == 'nasional') {
                         $select_sumber = 1;
@@ -673,7 +673,7 @@ class InstrumenAkreditasiProdiController extends Controller
                     $faktor[2]['jumlah'] += 1;
                     $faktor[3]['jumlah'] += 1;
                 }
-                $data['kepuasan_mahasiswa'] = $faktor;
+                $data['kepuasan_mahasiswa'] = [ $item['instrumen_terpilih']['url'], $faktor];
             }
 
             if ($item['slug'] == 'penelitian_dtps_mahasiswa') {
@@ -753,7 +753,9 @@ class InstrumenAkreditasiProdiController extends Controller
                 $prodi = Prodi::where('kode', $kodeprodi)->first();
                 $jumlah_ts = [$ts - 6, $ts - 5, $ts - 4, $ts - 3, $ts - 2, $ts - 1, $ts - 0];
 
-                $mahasiswa = Mahasiswa::where('daftar_ulang', 1)->where('status_keluar', 'lulus')->where('kode_prodi', $kodeprodi)->get();
+                $mahasiswa = Mahasiswa::where('daftar_ulang', 1)
+                ->where('status_keluar', 'lulus')
+                ->where('kode_prodi', $kodeprodi)->get();
 
                 $mahasiswa = $mahasiswa->filter(function ($i) {
                     if ($i['tanggal_yudisium'] === null || $i['tanggal_yudisium'] === 0) {

@@ -18,6 +18,7 @@ class CreateInstrumenAkreditasiSelectedsTable extends Migration
             $table->integer('kode_prodi');
             $table->string('slug');
             $table->boolean('status');
+            $table->string('url')->nullable();
             $table->timestamps();
         });
     }

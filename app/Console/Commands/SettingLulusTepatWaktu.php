@@ -198,7 +198,7 @@ class SettingLulusTepatWaktu extends Command
                             ],
                             [
                                 "masuk" => 2014,
-                                "lulus" => 5,
+                                "lulus" => 0,
                             ]
                         ]
                     ],
@@ -232,11 +232,32 @@ class SettingLulusTepatWaktu extends Command
                             ],
                             [
                                 "masuk" => 2014,
-                                "lulus" => 6,
+                                "lulus" => 15,
                             ],
                             [
                                 "masuk" => 2013,
                                 "lulus" => 3,
+                            ],
+                            [
+                                "masuk" => 2012,
+                                "lulus" => 0,
+                            ]
+                        ]
+                    ],
+                    [
+                        "tahun" => 2017,
+                        "angkatan" => [
+                            [
+                                "masuk" => 2014,
+                                "lulus" => 20,
+                            ],
+                            [
+                                "masuk" => 2013,
+                                "lulus" => 10,
+                            ],
+                            [
+                                "masuk" => 2012,
+                                "lulus" => 1,
                             ],
                             [
                                 "masuk" => 2012,

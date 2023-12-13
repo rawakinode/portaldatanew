@@ -1,7 +1,8 @@
 @if (isset($data['kepuasan_mahasiswa']))
     <div class="card">
-        <div class="card-header">
+        <div class="card-header" style="margin-bottom: -30px">
             <h4>Tabel Kepuasan Mahasiswa</h4>
+            <a href="{{ $data['kepuasan_mahasiswa'][0] ?? '#' }}" target="_blank"><button class="btn btn-primary btn-sm" style="float:right; position: relative;top:-37px;">Bukti Dukung</button></a>
         </div>
         <div class="card-body">
             <div class="table-responsive text-wrap">
@@ -21,7 +22,7 @@
                     </thead>
                     <tbody class="text-center">
                         @if (isset($data['kepuasan_mahasiswa']))
-                            @foreach ($data['kepuasan_mahasiswa'] as $item)
+                            @foreach ($data['kepuasan_mahasiswa'][1] as $item)
                                 <tr class="text-uppercase">
                                     <td>{{ $loop->iteration }}</td>
                                     <td class="text-start">{{ $item['faktor'] }} : {{ $item['penjelasan'] }}</td>
